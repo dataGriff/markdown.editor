@@ -3,6 +3,12 @@
 (function() {
     'use strict';
 
+    // Check if marked library is available
+    if (typeof marked === 'undefined') {
+        console.error('Marked library is not loaded - editor initialization skipped');
+        return;
+    }
+
     // DOM Elements
     const markdownInput = document.getElementById('markdownInput');
     const markdownPreview = document.getElementById('markdownPreview');
