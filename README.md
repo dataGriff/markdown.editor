@@ -19,7 +19,7 @@ A product manager friendly web-based markdown editor that integrates seamlessly 
 
 1. Go to your repository settings on GitHub
 2. Navigate to **Pages** section
-3. Under "Source", select the branch (usually `main` or `copilot/create-github-pages-site`)
+3. Under "Source", select your main branch (usually `main` or `master`)
 4. Select the root folder `/` as the source
 5. Click **Save**
 6. Wait a few minutes for GitHub to deploy your site

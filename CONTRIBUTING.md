@@ -8,7 +8,7 @@ Thank you for your interest in contributing to the Markdown Editor project! This
 
 If you find a bug or have a feature request:
 
-1. Check if the issue already exists in the [Issues](https://github.com/dataGriff/markdown.editor/issues)
+1. Check if the issue already exists in the repository's Issues tab
 2. If not, create a new issue with a clear title and description
 3. Include steps to reproduce (for bugs)
 4. Include screenshots if relevant
