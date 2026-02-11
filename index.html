@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Editor - GitHub Pages</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📝 Markdown Editor</h1>
+            <p>A product manager friendly editor for your GitHub Pages content</p>
+        </header>
+
+        <div class="toolbar">
+            <div class="file-controls">
+                <input type="text" id="repoOwner" placeholder="GitHub Username" value="">
+                <input type="text" id="repoName" placeholder="Repository Name" value="">
+                <input type="text" id="filePath" placeholder="Path to markdown file (e.g., docs/page.md)">
+                <button id="loadFile" class="btn btn-primary">Load File</button>
+                <button id="saveFile" class="btn btn-success">Save File</button>
+            </div>
+            <div class="auth-controls">
+                <input type="password" id="githubToken" placeholder="GitHub Personal Access Token">
+                <button id="clearToken" class="btn btn-secondary">Clear Token</button>
+            </div>
+        </div>
+
+        <div class="editor-container">
+            <div class="editor-pane">
+                <div class="pane-header">
+                    <h3>✏️ Editor</h3>
+                    <div class="format-buttons">
+                        <button class="btn-format" data-format="bold" title="Bold">B</button>
+                        <button class="btn-format" data-format="italic" title="Italic">I</button>
+                        <button class="btn-format" data-format="heading" title="Heading">H</button>
+                        <button class="btn-format" data-format="link" title="Link">🔗</button>
+                        <button class="btn-format" data-format="list" title="List">📋</button>
+                    </div>
+                </div>
+                <textarea id="markdownInput" placeholder="Start typing your markdown here...
+
+# Welcome to Markdown Editor
+
+This is a simple markdown editor that integrates with GitHub Pages.
+
+## Features
+
+- 📝 Live preview
+- 💾 Save directly to GitHub
+- 🎨 GitHub-flavored markdown
+- 👥 Product manager friendly
+
+## Getting Started
+
+1. Enter your GitHub username and repository name
+2. Provide a GitHub Personal Access Token (with repo permissions)
+3. Specify the path to your markdown file
+4. Click 'Load File' to edit existing content
+5. Make your changes and click 'Save File'
+
+## Markdown Tips
+
+**Bold text** with double asterisks
+*Italic text* with single asterisks
+[Links](https://github.com) with brackets and parentheses
+- Lists with dashes
+1. Numbered lists
+> Blockquotes with >
+
+Happy editing! 🚀"></textarea>
+            </div>
+            <div class="preview-pane">
+                <div class="pane-header">
+                    <h3>👁️ Preview</h3>
+                </div>
+                <div id="markdownPreview" class="markdown-body"></div>
+            </div>
+        </div>
+
+        <div class="status-bar">
+            <span id="statusMessage">Ready</span>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="assets/js/editor.js"></script>
+</body>
+</html>

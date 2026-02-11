@@ -1,0 +1,263 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* Toolbar */
+.toolbar {
+    background: #f8f9fa;
+    padding: 20px;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.file-controls,
+.auth-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.file-controls input,
+.auth-controls input {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #dee2e6;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+.file-controls input:focus,
+.auth-controls input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+/* Buttons */
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary {
+    background: #667eea;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #5568d3;
+}
+
+.btn-success {
+    background: #28a745;
+    color: white;
+}
+
+.btn-success:hover {
+    background: #218838;
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+}
+
+/* Editor Container */
+.editor-container {
+    display: flex;
+    height: calc(100vh - 350px);
+    min-height: 500px;
+}
+
+.editor-pane,
+.preview-pane {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-right: 2px solid #e9ecef;
+}
+
+.preview-pane {
+    border-right: none;
+}
+
+.pane-header {
+    background: #f8f9fa;
+    padding: 15px 20px;
+    border-bottom: 2px solid #e9ecef;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pane-header h3 {
+    font-size: 1.2rem;
+    color: #495057;
+}
+
+/* Format Buttons */
+.format-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.btn-format {
+    width: 36px;
+    height: 36px;
+    border: 2px solid #dee2e6;
+    background: white;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-format:hover {
+    background: #667eea;
+    color: white;
+    border-color: #667eea;
+}
+
+/* Editor Textarea */
+#markdownInput {
+    flex: 1;
+    padding: 20px;
+    border: none;
+    resize: none;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+#markdownInput:focus {
+    outline: none;
+}
+
+/* Preview */
+#markdownPreview {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background: #ffffff;
+}
+
+/* Status Bar */
+.status-bar {
+    background: #f8f9fa;
+    padding: 12px 20px;
+    border-top: 2px solid #e9ecef;
+    font-size: 14px;
+    color: #6c757d;
+}
+
+/* Markdown Body Adjustments */
+.markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 100%;
+    padding: 0;
+}
+
+.markdown-body h1 {
+    border-bottom: 1px solid #eaecef;
+    padding-bottom: 0.3em;
+}
+
+.markdown-body h2 {
+    border-bottom: 1px solid #eaecef;
+    padding-bottom: 0.3em;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .editor-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .editor-pane,
+    .preview-pane {
+        min-height: 300px;
+        border-right: none;
+        border-bottom: 2px solid #e9ecef;
+    }
+
+    .preview-pane {
+        border-bottom: none;
+    }
+
+    .file-controls,
+    .auth-controls {
+        flex-direction: column;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    .format-buttons {
+        flex-wrap: wrap;
+    }
+}
+
+/* Loading Animation */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '⏳';
+    margin-left: 10px;
+}

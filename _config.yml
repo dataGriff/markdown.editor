@@ -1,0 +1,34 @@
+# Jekyll configuration for GitHub Pages
+title: Markdown Editor
+description: A product manager friendly markdown editor for GitHub Pages
+theme: jekyll-theme-minimal
+
+# GitHub Pages settings
+baseurl: ""
+url: ""
+
+# Build settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+# Collections
+collections:
+  pages:
+    output: true
+    permalink: /:collection/:name
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+
+# Exclude from processing
+exclude:
+  - node_modules
+  - vendor
+  - Gemfile
+  - Gemfile.lock
