@@ -175,8 +175,14 @@
                 throw new Error('The specified path is not a file');
             }
 
-            // Decode base64 content
-            const content = atob(data.content);
+            // Decode base64 content with proper UTF-8 handling
+            const base64String = data.content.replace(/\n/g, '');
+            const binaryString = atob(base64String);
+            const bytes = new Uint8Array(binaryString.length);
+            for (let i = 0; i < binaryString.length; i++) {
+                bytes[i] = binaryString.charCodeAt(i);
+            }
+            const content = new TextDecoder().decode(bytes);
             markdownInput.value = content;
             currentFileSha = data.sha;
             
