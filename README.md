@@ -28,12 +28,13 @@ Your site will be available at: `https://[username].github.io/[repository-name]/
 
 ### Step 2: Get a GitHub Personal Access Token
 
-1. Go to GitHub Settings → Developer settings → Personal access tokens → Tokens (classic)
-2. Click **"Generate new token (classic)"**
+1. Go to GitHub Settings → Developer settings → Personal access tokens
+2. Choose either:
+   - **Tokens (classic)** - Click "Generate new token (classic)" and select the `repo` scope
+   - **Fine-grained tokens** - Click "Generate new token" and grant repository contents read/write permissions
 3. Give it a descriptive name (e.g., "Markdown Editor")
-4. Select the `repo` scope (this gives full control of private repositories)
-5. Click **"Generate token"**
-6. **Copy the token immediately** - you won't see it again!
+4. Click **"Generate token"**
+5. **Copy the token immediately** - you won't see it again!
 
 ### Step 3: Use the Editor
 

@@ -4,6 +4,7 @@ description: A product manager friendly markdown editor for GitHub Pages
 theme: jekyll-theme-minimal
 
 # GitHub Pages settings
+# These will be auto-configured by GitHub Pages
 baseurl: ""
 url: ""
 

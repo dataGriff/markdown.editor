@@ -1,5 +1,4 @@
 // Markdown Editor with GitHub Integration
-// Author: Product Manager Friendly Markdown Editor
 
 (function() {
     'use strict';
@@ -263,14 +262,6 @@
         repoOwner.value = localStorage.getItem('gh_repo_owner') || '';
         repoName.value = localStorage.getItem('gh_repo_name') || '';
         githubToken.value = localStorage.getItem('gh_token') || '';
-        
-        // Auto-populate with current repo if empty
-        if (!repoOwner.value || !repoName.value) {
-            const urlParts = window.location.hostname.split('.');
-            if (urlParts.length >= 2 && urlParts[1] === 'github') {
-                repoOwner.value = urlParts[0];
-            }
-        }
     }
 
     function saveSettings() {
