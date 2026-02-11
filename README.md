@@ -38,8 +38,8 @@ Your site will be available at: `https://[username].github.io/[repository-name]/
 ### Step 3: Use the Editor
 
 1. Open your GitHub Pages URL in a browser
-2. Enter your GitHub username (e.g., `dataGriff`)
-3. Enter your repository name (e.g., `markdown.editor`)
+2. Enter your GitHub username (e.g., `your-username`)
+3. Enter your repository name (e.g., `your-repository`)
 4. Paste your GitHub Personal Access Token
 5. Enter the path to a markdown file (e.g., `docs/sample-page.md`)
 6. Click **Load File** to edit existing content
