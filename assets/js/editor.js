@@ -219,7 +219,12 @@
 
             // Encode content to base64 with proper UTF-8 handling
             const utf8Bytes = new TextEncoder().encode(content);
-            const base64Content = btoa(String.fromCharCode(...utf8Bytes));
+            // Convert bytes to base64 without spreading large arrays
+            let binaryString = '';
+            for (let i = 0; i < utf8Bytes.length; i++) {
+                binaryString += String.fromCharCode(utf8Bytes[i]);
+            }
+            const base64Content = btoa(binaryString);
             
             const body = {
                 message: `Update ${path} via Markdown Editor`,
