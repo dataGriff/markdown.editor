@@ -1,5 +1,6 @@
 // Minimal markdown parser stub for testing/fallback
 // This is a simplified version - production should use the full marked.js from CDN
+// Limitations: Basic formatting only, may not handle edge cases correctly
 (function() {
     if (typeof marked !== 'undefined') return; // Already loaded from CDN
     
@@ -9,22 +10,22 @@
             
             // Simple markdown to HTML conversion
             let html = markdown
-                // Headers
+                // Headers (must be first to avoid conflicts)
                 .replace(/^### (.*$)/gim, '<h3>$1</h3>')
                 .replace(/^## (.*$)/gim, '<h2>$1</h2>')
                 .replace(/^# (.*$)/gim, '<h1>$1</h1>')
                 // Bold
-                .replace(/\*\*([^*]+)\*\*/gim, '<strong>$1</strong>')
-                .replace(/__([^_]+)__/gim, '<strong>$1</strong>')
-                // Italic
-                .replace(/\*([^*]+)\*/gim, '<em>$1</em>')
-                .replace(/_([^_]+)_/gim, '<em>$1</em>')
+                .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+                .replace(/__([^_]+)__/g, '<strong>$1</strong>')
+                // Italic (avoid matching within words)
+                .replace(/\*([^*\s][^*]*[^*\s]|\S)\*/g, '<em>$1</em>')
+                .replace(/\b_([^_\s][^_]*[^_\s]|\S)_\b/g, '<em>$1</em>')
                 // Links
-                .replace(/\[([^\]]+)\]\(([^)]+)\)/gim, '<a href="$2">$1</a>')
-                // Code blocks
-                .replace(/```([^`]+)```/gim, '<pre><code>$1</code></pre>')
+                .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
+                // Code blocks (multi-line)
+                .replace(/```([\s\S]+?)```/g, '<pre><code>$1</code></pre>')
                 // Inline code
-                .replace(/`([^`]+)`/gim, '<code>$1</code>')
+                .replace(/`([^`]+?)`/g, '<code>$1</code>')
                 // Blockquotes
                 .replace(/^&gt; (.*)$/gim, '<blockquote>$1</blockquote>')
                 .replace(/^> (.*)$/gim, '<blockquote>$1</blockquote>')
@@ -34,12 +35,15 @@
                 // Line breaks
                 .replace(/\n$/gim, '<br>');
             
-            // Wrap list items in ul
-            html = html.replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>');
+            // Wrap consecutive list items in ul tags
+            html = html.replace(/(<li>.*<\/li>\n?)+/gs, function(match) {
+                return '<ul>' + match + '</ul>';
+            });
             
             // Paragraphs
             html = html.split('\n\n').map(para => {
-                if (para.trim() && !para.match(/^<[h|u|o|p|b]/)) {
+                // Don't wrap if it's already an HTML element
+                if (para.trim() && !para.match(/^<[huopb]/)) {
                     return '<p>' + para + '</p>';
                 }
                 return para;

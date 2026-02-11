@@ -90,7 +90,12 @@ Happy editing! 🚀"></textarea>
     <script>
         // Fallback to alternative CDN if primary fails
         if (typeof marked === 'undefined') {
-            document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/11.1.1/marked.min.js"><\/script>');
+            (function() {
+                var script = document.createElement('script');
+                script.src = 'https://cdnjs.cloudflare.com/ajax/libs/marked/11.1.1/marked.min.js';
+                script.async = false;
+                document.head.appendChild(script);
+            })();
         }
     </script>
     <!-- Fallback markdown parser for environments where CDN is blocked -->
