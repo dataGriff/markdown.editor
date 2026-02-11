@@ -114,12 +114,7 @@
 
         markdownInput.value = text.substring(0, start) + newText + text.substring(end);
         markdownInput.focus();
-        
-        if (selectedText) {
-            markdownInput.setSelectionRange(start + cursorOffset, start + cursorOffset);
-        } else {
-            markdownInput.setSelectionRange(start + cursorOffset, start + cursorOffset);
-        }
+        markdownInput.setSelectionRange(start + cursorOffset, start + cursorOffset);
 
         renderMarkdown();
         updateStatus(`Applied ${format} formatting`);
@@ -216,9 +211,13 @@
             updateStatus('⏳ Saving file to GitHub...');
             saveFileBtn.classList.add('loading');
 
+            // Encode content to base64 with proper UTF-8 handling
+            const utf8Bytes = new TextEncoder().encode(content);
+            const base64Content = btoa(String.fromCharCode(...utf8Bytes));
+            
             const body = {
                 message: `Update ${path} via Markdown Editor`,
-                content: btoa(unescape(encodeURIComponent(content))),
+                content: base64Content,
                 sha: currentFileSha
             };
 
