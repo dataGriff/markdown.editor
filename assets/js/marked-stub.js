@@ -1,6 +1,10 @@
 // Minimal markdown parser stub for testing/fallback
 // This is a simplified version - production should use the full marked.js from CDN
-// Limitations: Basic formatting only, may not handle edge cases correctly
+// Known limitations:
+// - Single-character italic may not work correctly
+// - All consecutive lists wrapped in single ul (no ordered list support)
+// - Some HTML elements may be incorrectly wrapped in paragraphs
+// - Edge cases with nested formatting not handled
 (function() {
     if (typeof marked !== 'undefined') return; // Already loaded from CDN
     
